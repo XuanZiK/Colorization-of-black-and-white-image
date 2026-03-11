@@ -34,9 +34,8 @@ A **two-step strategy**: **pre-training + adversarial fine-tuning**.
 
 - **Discriminator Loss**:  
   - 1 for real images, 0 for fake images
-
-- **Future Work**:  
-  - **Total Variation (TV) Loss** to reduce noise and unnatural color blocks
+  
+- **Total Variation (TV) Loss** to reduce noise and unnatural color blocks
 
 ---
 
