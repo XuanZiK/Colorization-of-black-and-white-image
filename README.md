@@ -1,78 +1,118 @@
-Project: Deep Learning-based Image Colorization System
+# Deep Learning-based Image Colorization System 🎨
 
-This repository contains the source code and documentation for a GAN-based image colorization system, specifically focusing on addressing color bleeding and desaturation issues using a classification-driven approach.
-    Research Method
+This repository contains a **GAN-based image colorization system**, designed to tackle common colorization issues such as **color bleeding** and **desaturation**, using a **classification-driven approach**.
 
-    Architecture: The project adopts a Generative Adversarial Networks (GAN) architecture, specifically the Pix2Pix model designed for image-to-image translation.
+---
 
-    Color Space Selection: Unlike the traditional RGB space, this project operates within the CIE Lab space.
+## 🔬 Research Method
 
-        L channel: Luminance (Input).
+### Architecture
+- Based on **Generative Adversarial Networks (GANs)**.
+- Uses the **Pix2Pix** model for image-to-image translation.
 
-        a and b channels: Color information (Prediction targets).
+### Color Space Selection
+- Operates in **CIE Lab space**:
+  - **L channel**: Luminance (Input)
+  - **a and b channels**: Color information (Prediction targets)
 
-    Learning Paradigm: Adopt a two-step strategy of "pre-training + adversarial fine-tuning." * Step 1: The generator undergoes supervised pre-training using Cross-Entropy (CE) loss to ensure the model initially grasps color distribution.
+### Learning Paradigm
+A **two-step strategy**: **pre-training + adversarial fine-tuning**.
 
-        Step 2: An adversarial training process is introduced with a discriminator to enhance color saturation and visual realism.
+1. **Step 1 – Supervised Pre-training**
+   - Generator is pre-trained using **Cross-Entropy (CE) loss**.
+   - Ensures the model initially learns the color distribution.
 
-    Loss Function Design:
+2. **Step 2 – Adversarial Training**
+   - Introduces a **discriminator**.
+   - Enhances **color saturation** and **visual realism**.
 
-        Total Generator Loss:
-        LG​=LGAN​+λ⋅LCE​
+### Loss Function Design
+- **Generator Loss**:  
+  \[
+  L_G = L_{GAN} + \lambda \cdot L_{CE}
+  \]  
+  - \(L_{GAN}\): Binary Cross-Entropy (BCE) or Least Squares GAN (LSGAN) loss  
+  - \(L_{CE}\): Cross Entropy Loss for 313 color categories
 
-            LGAN​: Utilize binary cross-entropy (BCE) or least squares (LSGAN) loss.
+- **Discriminator Loss**:  
+  - 1 for real images, 0 for fake images
 
-            LCE​: Cross Entropy Loss (Treats color prediction as a multi-class classification problem with 313 categories).
+- **Future Work**:  
+  - **Total Variation (TV) Loss** to reduce noise and unnatural color blocks
 
-        Discriminator Loss: 1 for real images, 0 for fake images.
+---
 
-        Future Work: Total Variation (TV) Loss (Designed to reduce "noise" and "unnatural color blocks").
+## 🎯 Aims and Outcomes
 
-    Aims and Outcomes
+### Primary Aim
+Develop a **classification-driven image colorization system** to reduce **color bleeding** and **desaturation** issues found in regression-based methods.
 
-    Primary Aim: To develop a deep learning-based image colorization system using a classification-driven approach to address the issue of color bleeding and desaturation commonly found in regression-based models.
+### Outcomes
+- Source Code
+- Evaluation Report & Data
+- Functional Software(?????) Solution
 
-    Outcomes:
+---
 
-        Source Code
+## 🛠 Development of the Solution
 
-        Evaluation Report & Data
+### Practical Problem
+- Address **desaturation**
+- Efficiently process **large-scale image datasets** for colorization
 
-        Software Solution
+### Software Architecture Design
+- Modular design including:
+  - Data Loading
+  - Training
+  - Validation
 
-    Development of a Solution
+### Algorithmic Implementation
+- **Pix2Pix** with **313-bin color classification**
 
-Practical Problem: Solving desaturation and inefficient processing of large-scale image data for colorization.
+### Tools & Technology Stack
+- **Python**, **PyTorch**, **NumPy**, **Matplotlib**, **Scikit-image**, **FastAI (DynamicUnet)**
 
-    Software Architecture Design: (Modular design involving Data loading, Main Training, and Validation).
+---
 
-    Algorithmic Implementation: Implementation of Pix2Pix with 313-bin color classification.
+## ✅ Verification and Validation
 
-    Tools and Technology Stack: Python, PyTorch, NumPy, Matplotlib, Skimage, FastAI (DynamicUnet).
+### Verification
+- Code implementation checks
+- Smoke tests on data loaders
+- Range validation (LAB values normalized correctly)
 
-    Verification and Validation
+### Validation
+- Randomly selected samples to evaluate generalization on unseen data
+- Visual comparison of:
+  - Grayscale input
+  - Predicted result
+  - Ground truth
 
-    Verification: Through code implementation checks, Smoke Tests on data loaders, and range validation (ensuring LAB values are normalized correctly).
+---
 
-    Validation:
+## ⚡ Critical Appraisal
 
-        Randomly select samples to show generalization on unseen data.
+### Potential Improvement
+- Introduce **Attention Mechanism** to improve **global color consistency**(?????)
 
-        Visual comparison between Gray-scale input, Predicted result, and Ground Truth.
+### Current Limitation
+- Some colors may still lack authenticity in **complex semantic scenes**
 
-    Critical Appraisal of the Project
+---
 
-    Potential Improvement: Introducing Attention Mechanism to improve global color consistency.
+## Question
+- Training successfully transitioned from **RTX 3060** to **A6000**(?????)
+- Validation still supported on **RTX 3060**
 
-    Current Limitation: Some colors may still lack total authenticity in complex semantic scenes.
+---
 
-Other question
-    Resource Adaptation: Successfully transitioned training resources from RTX 3060 to A6000, while maintaining validation capabilities on the 3060.
+## 📂 File Structure
 
-    File Structure
+| File | Description |
+|------|-------------|
+| `load_lab_npy_data.py` | High-performance data loading using `mmap` |
+| `train_pix2pix_from_npy.py` | Main GAN training logic and model definition |
+| `val.py` | Inference and visualization script for model validation |
 
-    load_lab_npy_data.py: High-performance data loading using mmap.
+---
 
-    train_pix2pix_from_npy.py: Main GAN training logic and model definition.
-
-    val.py: Inference and visualization script for model validation.
