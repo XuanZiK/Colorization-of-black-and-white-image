@@ -74,19 +74,14 @@ Develop a **classification-driven image colorization system** to reduce **color 
 
 ---
 
-## ✅ Verification and Validation
+## ✅ Verification and Validation(?????)
 
 ### Verification
-- Code implementation checks
-- Smoke tests on data loaders
-- Range validation (LAB values normalized correctly)
+（through code????? or some real society services）
+- like Range validation? (LAB values normalized correctly)
 
 ### Validation
-- Randomly selected samples to evaluate generalization on unseen data
-- Visual comparison of:
-  - Grayscale input
-  - Predicted result
-  - Ground truth
+- Randomly selected samples to evaluate generalization on unseen data(?????)
 
 ---
 
