@@ -28,9 +28,7 @@ A **two-step strategy**: **pre-training + adversarial fine-tuning**.
 
 ### Loss Function Design
 - **Generator Loss**:  
-  \[
-  L_G = L_{GAN} + \lambda \cdot L_{CE}
-  \]  
+  L_G = L_GAN + λ * L_CE
   - \(L_{GAN}\): Binary Cross-Entropy (BCE) or Least Squares GAN (LSGAN) loss  
   - \(L_{CE}\): Cross Entropy Loss for 313 color categories
 
