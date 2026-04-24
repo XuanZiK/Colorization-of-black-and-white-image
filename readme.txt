@@ -233,10 +233,20 @@ archive/pts_in_hull.npy
 The code is pure Python — no compilation step is required.
 
 1. Create an isolated environment
+Option A — venv (ships with Python, no extra install)
 Bash
 python3 -m venv .venv
 source .venv/bin/activate          # Linux / macOS
 # .venv\Scripts\activate           # Windows PowerShell
+Option B — conda / mamba (preferred if you want to pin the Python version or manage CUDA toolkits)
+Install one of the following distributions first:
+- Miniconda : https://docs.conda.io/en/latest/miniconda.html
+- Miniforge : https://github.com/conda-forge/miniforge
+- Anaconda  : https://www.anaconda.com/download
+Then create and activate an env:
+Bash
+conda create -n colorize python=3.10 -y
+conda activate colorize
 2. Upgrade pip
 Bash
 pip install --upgrade pip
