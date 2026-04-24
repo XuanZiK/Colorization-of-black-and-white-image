@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Model checkpoints (too large for GitHub)
+*.pt
+*.pth
+*.ckpt
+
+# Datasets (too large for GitHub)
+*.npy
+*.npz
+Final_report_code/archive/
+
+# PDFs
+*.pdf
+
+# Environments
+.env
+.venv/
+venv/
+env/
